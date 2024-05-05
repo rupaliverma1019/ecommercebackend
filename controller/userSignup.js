@@ -105,7 +105,7 @@ async function userSignUpController(req, res) {
 
             const userData = new userModel(payload);
             const saveUser = await userData.save();
-            console.log(saveUser);
+            console.log("saveUser", saveUser);
             res.status(201).json({
                 data: saveUser,
                 success: true,
