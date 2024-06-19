@@ -79,21 +79,22 @@ async function userSignInController(req, res) {
             const tokenData = {
                 _id: user._id,
                 email: user.email,
+
             }
 
             const token = await jwt.sign(tokenData, process.env.JWT_SECRET, { expiresIn: 60 * 60 });
 
             // Fetch profile pic here
-            const profilePic = user.profilepic;
+            // const profilePic = user.profilepic;
 
             const tokenOption = {
                 httpOnly: true,
                 secure: true
             }
 
-            const cookie = await res.cookie("token", token, tokenOption).json({
+            await res.cookie("token", token, tokenOption).json({
                 message: "User signed in successfully",
-                profilepic: profilePic, // Include profile picture in the response
+                // profilepic: profilePic, // Include profile picture in the response
                 error: false,
                 success: true,
             });
