@@ -19,6 +19,4 @@ app.use("/api", router)
 
 const PORT = 8080 || process.env.PORT
 
-app.listen(PORT, () => {
-    console.log("server is running")
-})
+app.listen(PORT, () => {})

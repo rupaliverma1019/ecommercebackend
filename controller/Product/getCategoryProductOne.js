@@ -4,7 +4,6 @@ const getCategoryProductOne = async(req, res) => {
     try {
         // Get the distinct product categories
         const productCategory = await productModel.distinct("category");
-        console.log("Category", productCategory);
 
         // Array to store one product from each category
         const productByCategory = [];

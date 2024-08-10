@@ -5,9 +5,14 @@ async function authToken(req, res, next) {
     try {
         // Extract the token from the request headers or cookies
         const token = req.cookies.token || req.header('Authorization');
-        console.log(token)
         if (!token) {
-            throw new Error('Authorization token is missing');
+
+            // throw new Error('Authorization token is missing');
+            return res.status(200).json({
+                message: "Please Login..",
+                error: true,
+                success: false
+            })
         }
 
         // Verify the token
@@ -15,8 +20,7 @@ async function authToken(req, res, next) {
 
         // Attach the decoded token data to the request for later use
         req.user = decoded;
-        console.log(req.user)
-            // Move to the next middleware or route handler
+        // Move to the next middleware or route handler
         next();
     } catch (error) {
         // Handle errors

@@ -4,8 +4,6 @@ const bcrypt = require('bcryptjs');
 async function userSignUpController(req, res) {
     try {
         const { email, password, username, profilepic } = req.body;
-
-        console.log("req body ", req.body);
         if (!email) {
             throw new Error("please Provide Email");
         }
@@ -36,7 +34,6 @@ async function userSignUpController(req, res) {
 
             const userData = new userModel(payload);
             const saveUser = await userData.save();
-            console.log("saveUser", saveUser);
             res.status(201).json({
                 data: saveUser,
                 success: true,

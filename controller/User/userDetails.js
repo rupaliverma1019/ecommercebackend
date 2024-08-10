@@ -4,10 +4,8 @@ async function userDetails(req, res) {
     try {
         // Assuming you are using the authToken middleware to attach user data to the request object
         const user = req.user;
-        console.log(user)
-            // Fetch user details from the database using the user ID
+        // Fetch user details from the database using the user ID
         const userDetails = await userModel.findById(user._id);
-        console.log(userDetails)
         if (!userDetails) {
             throw new Error("User details not found");
         }
